@@ -92,3 +92,40 @@ export function bubbleSort(unsortedArray){
 
   return unSortedElements;
 }
+
+//heaps sort there is two kind of heap sort one is this
+//max and the other one is min both works the same way
+//their name aliases show how they handle ops.
+function maxHeapify(array, index, heapSize){
+  let largest = index;
+  const left = 2 * index + 1; //Left child index
+  const right = 2 * index + 2; //Right child index
+
+  if(left < heapSize && array[left] > array[largest]){
+    largest = left;
+  }
+
+  if(right < heapSize && array[right] > array[largest]){
+    largest = right;
+  }
+
+  if(largest != index){
+    [array[index], array[largest]] = [array[largest], array[index]];
+    maxHeapify(array, largest, heapSize);
+  }
+}
+
+export function heapSort(unsortedArray){
+  const n = unsortedArray.length;
+
+    // Build a max heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        maxHeapify(unsortedArray, i, n);
+    }
+    // Extract elements from the heap one by one
+    for (let i = n - 1; i > 0; i--) {
+        // Move the current root to the end
+        [unsortedArray[0], unsortedArray[i]] = [unsortedArray[i], unsortedArray[0]];
+        maxHeapify(unsortedArray, 0, i);
+    }
+}

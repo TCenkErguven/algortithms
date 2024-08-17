@@ -1,5 +1,5 @@
 import express from "express";
-import { insertionSort, selectionSort, mergeSort, bubbleSort } from "./sort.mjs";
+import { insertionSort, selectionSort, mergeSort, bubbleSort, heapSort } from "./sort.mjs";
 const app = express();
 const port = 3000;
 
@@ -34,6 +34,13 @@ app.post("/sort/bubble", (req, res) => {
   console.log("Bubble sort request...");
   const sortedArray = bubbleSort(unsortedArray);
   res.json(sortedArray);
+});
+
+app.post("/sort/heap", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Heap sort request...");
+  heapSort(unsortedArray);
+  res.json(unsortedArray);
 });
 
 
