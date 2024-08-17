@@ -1,10 +1,16 @@
 import express from "express";
-import { insertionSort, selectionSort, mergeSort, bubbleSort, heapSort } from "./sort.mjs";
+import {
+  insertionSort,
+  selectionSort,
+  mergeSort,
+  bubbleSort,
+  heapSort,
+  quickSort,
+} from "./sort.mjs";
 const app = express();
 const port = 3000;
 
-app.use(express.json()); 
-
+app.use(express.json());
 
 //Sorting Algorithms
 
@@ -43,9 +49,13 @@ app.post("/sort/heap", (req, res) => {
   res.json(unsortedArray);
 });
 
+app.post("/sort/quick", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Quick sort request...");
+  quickSort(unsortedArray, 0, unsortedArray.length - 1);
+  res.json(unsortedArray);
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
