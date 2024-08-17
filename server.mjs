@@ -7,6 +7,15 @@ import {
   heapSort,
   quickSort,
 } from "./sort.mjs";
+import {
+  linearSearch,
+  binarySearch,
+  hashing,
+  jumpSearch,
+  ternarySearch,
+  exponentialSearch,
+  treeSearch,
+} from "./search.mjs";
 const app = express();
 const port = 3000;
 
@@ -53,6 +62,62 @@ app.post("/sort/quick", (req, res) => {
   const unsortedArray = req.body;
   console.log("Quick sort request...");
   quickSort(unsortedArray, 0, unsortedArray.length - 1);
+  res.json(unsortedArray);
+});
+
+app.post("/sort/quick", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Quick sort request...");
+  quickSort(unsortedArray, 0, unsortedArray.length - 1);
+  res.json(unsortedArray);
+});
+
+app.post("/search/linear", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Linear search request...");
+  linearSearch();
+  res.json(unsortedArray);
+});
+
+app.post("/search/binary", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Binary search request...");
+  binarySearch();
+  res.json(unsortedArray);
+});
+
+app.post("/search/hashing", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Hashing request...");
+  hashing();
+  res.json(unsortedArray);
+});
+
+app.post("/search/jump", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Jump search request...");
+  jumpSearch();
+  res.json(unsortedArray);
+});
+
+app.post("/search/ternary", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Ternary search request...");
+  ternarySearch();
+  res.json(unsortedArray);
+});
+
+app.post("/search/exponential", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Exponential search request...");
+  exponentialSearch();
+  res.json(unsortedArray);
+});
+
+app.post("/search/tree", (req, res) => {
+  const unsortedArray = req.body;
+  console.log("Tree search request...");
+  treeSearch();
   res.json(unsortedArray);
 });
 
