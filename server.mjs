@@ -73,17 +73,18 @@ app.post("/sort/quick", (req, res) => {
 });
 
 app.post("/search/linear", (req, res) => {
-  const unsortedArray = req.body;
+  const requestBody = req.body;
   console.log("Linear search request...");
-  linearSearch();
-  res.json(unsortedArray);
+  res.json(linearSearch(requestBody.array, requestBody.searchedValue));
 });
 
 app.post("/search/binary", (req, res) => {
-  const unsortedArray = req.body;
+  const requestBody = req.body;
+  const arr = requestBody.array.sort((a, b) => a - b);
+    let low = 0;
+    let high = array.length -1;
   console.log("Binary search request...");
-  binarySearch();
-  res.json(unsortedArray);
+  res.json( binarySearch(low, high, arr, requestBody.searchedValue));
 });
 
 app.post("/search/hashing", (req, res) => {
@@ -94,24 +95,25 @@ app.post("/search/hashing", (req, res) => {
 });
 
 app.post("/search/jump", (req, res) => {
-  const unsortedArray = req.body;
+  const requestBody = req.body;
   console.log("Jump search request...");
-  jumpSearch();
-  res.json(unsortedArray);
+  res.json(jumpSearch(requestBody.array, requestBody.searchedValue));
 });
 
 app.post("/search/ternary", (req, res) => {
-  const unsortedArray = req.body;
+  const requestBody = req.body;
   console.log("Ternary search request...");
-  ternarySearch();
-  res.json(unsortedArray);
+  const sortedArray = requestBody.array.sort((a, b)=> a - b);
+  res.json(ternarySearch(0, sortedArray.length -1, 
+    sortedArray, requestBody.searchedValue ));
 });
 
 app.post("/search/exponential", (req, res) => {
-  const unsortedArray = req.body;
+  const requestBody = req.body;
   console.log("Exponential search request...");
-  exponentialSearch();
-  res.json(unsortedArray);
+  const sortedArray = requestBody.array.sort((a, b)=> a - b);
+  res.json(exponentialSearch(sortedArray, 
+    requestBody.searchedValue));
 });
 
 app.post("/search/tree", (req, res) => {
