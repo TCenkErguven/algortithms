@@ -6,9 +6,8 @@ export function insertionSort(unsortedArray) {
   const unSortedElements = [...unsortedArray];
   const length = unSortedElements.length;
 
-  for (let i = 1; i <= unSortedElements.length; i++) {
+  for (let i = 1; i < unSortedElements.length; i++) {
     const key = unSortedElements[i];
-    if (!key) break;
     let j = i - 1;
     while (j >= 0 && unSortedElements[j] > key) {
       unSortedElements[j + 1] = unSortedElements[j];
@@ -82,7 +81,7 @@ export function bubbleSort(unsortedArray) {
   const lengthOfElements = unSortedElements.length;
 
   for (let i = 0; i < lengthOfElements - 1; i++) {
-    for (let j = lengthOfElements; j >= i; j--) {
+    for (let j = lengthOfElements - 1; j > i; j--) {
       if (unSortedElements[j] < unSortedElements[j - 1]) {
         const prev = unSortedElements[j];
         const next = unSortedElements[j - 1];
