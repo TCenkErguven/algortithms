@@ -69,7 +69,7 @@ export function jumpSearch(array, searchedValue) {
     
     // If the element is found 
     if (array[prev] == searchedValue) 
-        return prev; 
+        return `Searched value is located at the index ${prev} inside this sorted array [${array}]`;
    
     return `Searched value ${searchedValue} could not be found inside the array`;
 } 
@@ -132,4 +132,6 @@ export function exponentialSearch(array, searchedValue) {
 }
 
 //Tree search
-export function treeSearch() {}
+export function treeSearch() {
+    return "Tree search is not yet fully implemented, but it is on our roadmap!";
+}
